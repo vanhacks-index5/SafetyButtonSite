@@ -26,6 +26,8 @@ Route::get('/', function () {
 |
 */
 
+Route::resource('user', 'UserController');
+
 Route::group(['middleware' => ['web']], function () {
     //
 });
