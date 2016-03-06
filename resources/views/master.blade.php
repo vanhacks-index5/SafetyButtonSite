@@ -39,6 +39,8 @@
 <script>
     $(document).foundation();
 </script>
-<script src="/js/scripts.js"></script>
+
+@yield('check-script')
+
 </body>
 </html>

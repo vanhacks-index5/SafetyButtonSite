@@ -45,3 +45,7 @@
         </div>
     </div>
 @endsection
+
+@section('check-script')
+    <script src="/js/scripts.js"></script>
+@endsection
