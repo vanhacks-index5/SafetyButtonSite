@@ -14,19 +14,12 @@ use App\User;
 class AuthenticateController extends Controller
 {
 
+	/**
+	 * Enforce authentication
+	 */
 	public function __construct()
 	{
-		// Apply the jwt.auth middleware to all methods in this controller
-		// except for the authenticate method. We don't want to prevent
-		// the user from retrieving their token if they don't already have it
 		$this->middleware('jwt.auth', ['except' => ['authenticate']]);
-	}
-
-	public function index()
-	{
-		// Retrieve all the users in the database and return them
-		$users = User::all();
-		return $users;
 	}
 
 	public function authenticate(Request $request)
@@ -43,6 +36,10 @@ class AuthenticateController extends Controller
 			// something went wrong whilst attempting to encode the token
 			return response()->json(['error' => 'could_not_create_token'], 500);
 		}
+
+		$ThisUser = User::where('email', $request->email)->first();
+		$ThisUser->remember_token = $token;
+		$ThisUser->save();
 
 		// all good so return the token
 		return response()->json(compact('token'));

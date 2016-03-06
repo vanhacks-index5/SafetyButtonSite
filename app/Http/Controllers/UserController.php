@@ -3,13 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use JWTAuth;
 
 class UserController extends Controller
 {
-	public function index()
+	/**
+	 * Enforce authentication
+	 */
+	public function __construct()
 	{
-		$Users = User::all();
+		$this->middleware('jwt.auth', ['except' => ['authenticate']]);
+	}
+
+	public function index(Request $request)
+	{
+		$Users = User::where('remember_token', $request->token)->first();
 		return json_encode($Users);
 	}
 
@@ -17,9 +27,16 @@ class UserController extends Controller
 	{
 		$ThisUser = new User;
 
-		$ThisUser->Username = $request->Username;
-		$ThisUser->Password = $request->Password;
+		$ThisUser->name = $request->name;
+		$ThisUser->email = $request->email;
+		$ThisUser->password = Hash::make($request->password);
+
+		// Generate token immediately
+		$Token = JWTAuth::fromUser($ThisUser);
+		$ThisUser->remember_token = $Token;
 
 		$ThisUser->save();
+
+		return json_encode($ThisUser);
 	}
 }
