@@ -36,9 +36,15 @@ Route::group(['prefix' => 'api'], function () {
 	Route::resource('user', 'UserController');
 	Route::post('/user/{id}/clear', 'UserController@clear');
 	Route::resource('userinfos', 'UserInfosController');
-	
+
+//	Route::resource('userinfos', 'UserInfosController');
+
+	Route::resource('userinfos', 'UserInfosController',
+		['except' => ['store']]);
+
+	Route::post('/sms', 'SmsController@store');
+	Route::get('/sms', 'SmsController@store');
 	Route::get('/emergencyusers', 'UserController@getEmergencyUsers');
-	Route::post('sms', 'SmsController@index');
 });
 
 Route::group(['middleware' => ['web']], function () {

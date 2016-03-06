@@ -86,11 +86,7 @@
             currentMessage = message.payloadString;
             currentArray = currentMessage.split('|');
 
-<<<<<<< HEAD
             $("#primary-table tr:last").after("<tr data-id='" + currentArray[0] + "'><td>" + currentArray[0] + "</td><td>" + currentArray[1] + "</td><td>" + currentArray[2] + "</td><td>" + currentArray[3] + "</td><td><a href='/profile/" + currentArray[0] + "/' class='button small'>View</a> <input type='submit' class='button small success clear-button' value='Resolved'></td></tr>");
-=======
-            $("#primary-table tr:last").after("<tr><td>" + currentArray[0] + "</td><td>" + currentArray[1] + "</td><td>3</td><td>4</td></tr>");
->>>>>>> 7e2e0286366e65ac724a15ff2db177ea0235a4b2
         }
 
         $(document).ready(function () {
