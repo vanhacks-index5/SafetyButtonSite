@@ -42,6 +42,6 @@ class AuthenticateController extends Controller
 		$ThisUser->save();
 
 		// all good so return the token
-		return response()->json(compact('token'));
+		return json_encode($ThisUser);
 	}
 }
