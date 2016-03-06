@@ -34,6 +34,8 @@ Route::group(['prefix' => 'api'], function () {
 	Route::resource('user', 'UserController');
 	Route::post('/user/{id}/clear', 'UserController@clear');
 	Route::resource('userinfos', 'UserInfosController');
+
+	Route::get('/emergencyusers', 'UserController@getEmergencyUsers');
 });
 
 Route::group(['middleware' => ['web']], function () {

@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="/css/foundation.css"/>
     <link rel="stylesheet" href="/css/_custom.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script src="/js/mqttws31.js"></script>
-    <script src="/js/scripts.js"></script>
+
 </head>
 <body>
 <div class="contain-to-grid">
@@ -33,10 +34,11 @@
 
 @yield('content')
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
 <script src="/js/foundation.min.js"></script>
 <script>
     $(document).foundation();
 </script>
+<script src="/js/scripts.js"></script>
 </body>
 </html>

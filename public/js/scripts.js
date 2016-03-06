@@ -1,34 +1,36 @@
 
 
-// Create a client instance
-client = new Paho.MQTT.Client("199.116.240.38", 1883, "clientId");
+var emergencyUsersDB = [];
+var emergencyUsersPage = [];
 
-// set callback handlers
-client.onConnectionLost = onConnectionLost;
-client.onMessageArrived = onMessageArrived;
-
-// connect the client
-client.connect({onSuccess:onConnect});
-
-
-// called when the client connects
-function onConnect() {
-    // Once a connection has been made, make a subscription and send a message.
-    console.log("onConnect");
-    client.subscribe("/EmergencyChannel");
-    message = new Paho.MQTT.Message("Hello");
-    message.destinationName = "/World";
-    client.send(message);
+var contents = $('.user-id');
+for(var i = 0; i < contents.length; i++){
+    emergencyUsersPage.push(Number(contents[i].innerHTML));
 }
 
-// called when the client loses its connection
-function onConnectionLost(responseObject) {
-    if (responseObject.errorCode !== 0) {
-        console.log("onConnectionLost:"+responseObject.errorMessage);
-    }
-}
 
-// called when a message arrives
-function onMessageArrived(message) {
-    console.log("onMessageArrived:"+message.payloadString);
-}
+
+var check = function() {
+    var emergencyUsers = "http://localhost:8500/api/emergencyusers?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6XC9cLzE5OS4xMTYuMjQwLjM3XC9hcGlcL2F1dGhlbnRpY2F0ZSIsImlhdCI6MTQ1NzIzOTY3MCwiZXhwIjoxNDg4Nzc1NjcwLCJuYmYiOjE0NTcyMzk2NzAsImp0aSI6IjM1YTA3MGVkY2Y4MTI4N2VmNTM0ZDNhZGZlMTE4ZGZhIn0.IVGIOPLwUmVErU2V5QM51v0OvsgKA4lEqUEZCvzXx0A";
+    $.getJSON( emergencyUsers, {
+        format: "json"
+    })
+        .done(function( data ) {
+            emergencyUsersDB = [];
+
+            for(var i = 0; i < data.length; i++){
+                emergencyUsersDB.push(data[i].id);
+                console.log(data[i].id)
+            }
+
+
+            if($(emergencyUsersDB).not(emergencyUsersPage).length !== 0 && $(emergencyUsersDB).not(emergencyUsersPage).length !== 0){
+                location.reload();
+            }
+        });
+};
+
+check();
+
+
+setInterval(function(){ check() }, 5000);

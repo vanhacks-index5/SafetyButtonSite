@@ -59,4 +59,9 @@ class UserController extends Controller
 		$user->lng = null;
 		$user->save();
 	}
+
+	public function getEmergencyUsers(){
+		$EmergencyUsers = User::where('emergency', 1)->get();
+		return response()->json($EmergencyUsers);
+	}
 }

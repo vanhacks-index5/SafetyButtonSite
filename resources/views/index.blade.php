@@ -23,6 +23,7 @@
                 <table class="width-full">
                     <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Contact #</th>
                         <th>User</th>
                         <th>Time</th>
@@ -31,6 +32,7 @@
                     </thead>
                     @foreach ($EmergencyUsers as $ThisUser)
                         <tr>
+                            <td class="user-id">{{ $ThisUser->id}}</td>
                             <td>{{ $ThisUser->number }}</td>
                             <td>{{ $ThisUser->name }}</td>
                             <td>{{ $ThisUser->updated_at }}</td>
