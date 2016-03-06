@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'IndexController@index');
+Route::get('/index2', 'IndexController@index2');
 Route::get('/profile', 'IndexController@profile');
 Route::get('/profile/{id}/{lat?}/{lng?}', 'IndexController@show');
 Route::get('/log', 'IndexController@log');
@@ -36,6 +37,7 @@ Route::group(['prefix' => 'api'], function () {
 	Route::resource('userinfos', 'UserInfosController');
 
 	Route::get('/emergencyusers', 'UserController@getEmergencyUsers');
+	Route::post('sms', 'SmsController@index');
 });
 
 Route::group(['middleware' => ['web']], function () {

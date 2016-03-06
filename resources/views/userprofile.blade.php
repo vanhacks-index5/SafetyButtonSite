@@ -4,7 +4,7 @@
 
     <div class="row">
         <div class="large-12 small-12 columns">
-            <div class="panel">
+            <div class="panel margin-top">
                 <h4>Client Profile Panel</h4>
             <table>
                 <tbody>

@@ -46,7 +46,6 @@ class UserController extends Controller
 	{
 		$user = User::find($id);
 
-
 		$user->lat = $request->input("lat");
 		$user->lng = $request->input("lng");
 		$user->save();
