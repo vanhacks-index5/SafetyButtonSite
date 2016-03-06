@@ -30,6 +30,8 @@ class UserController extends Controller
 		$ThisUser->name = $request->name;
 		$ThisUser->email = $request->email;
 		$ThisUser->password = Hash::make($request->password);
+		$ThisUser->number = $request->number;
+		$ThisUser->emergency_code = $request->emergency_code;
 
 		// Generate token immediately
 		$Token = JWTAuth::fromUser($ThisUser);

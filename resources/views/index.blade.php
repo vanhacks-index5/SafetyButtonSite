@@ -10,7 +10,7 @@
                 </div>
             @else
                 <div class="alert-box alert margin-top">
-                    There are currently ongoing emergencies.
+                    There are currently {{ count($EmergencyUsers) }} ongoing emergencies.
                 </div>
             @endif
         </div>
