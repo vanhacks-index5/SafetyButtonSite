@@ -16,6 +16,9 @@ Route::get('/profile', 'IndexController@profile');
 Route::get('/profile/{id}/{lat?}/{lng?}', 'IndexController@show');
 Route::get('/log', 'IndexController@log');
 
+Route::resource('usersinfo', 'UserInfosController',
+	['only' => ['store']]);
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -33,7 +36,10 @@ Route::group(['prefix' => 'api'], function () {
 
 	Route::resource('user', 'UserController');
 	Route::post('/user/{id}/clear', 'UserController@clear');
-	Route::resource('userinfos', 'UserInfosController');
+//	Route::resource('userinfos', 'UserInfosController');
+
+	Route::resource('userinfos', 'UserInfosController',
+		['except' => ['store']]);
 
 	Route::get('/emergencyusers', 'UserController@getEmergencyUsers');
 });
