@@ -23,7 +23,7 @@ class IndexController extends Controller
 		$Users = DB::select(
 			"SELECT * " .
 			"FROM users " .
-			"   JOIN UserInfos " .
+			"   LEFT JOIN UserInfos " .
 			"       ON users.id = UserInfos.Info_ID " .
 			"ORDER BY UserInfos.Info_ID DESC "
 		);
