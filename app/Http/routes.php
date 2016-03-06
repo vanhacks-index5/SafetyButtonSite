@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'IndexController@index');
+Route::get('/profile', 'IndexController@profile');
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +25,14 @@ Route::get('/', function () {
 |
 */
 
-Route::resource('user', 'UserController');
+Route::group(['prefix' => 'api'], function () {
+	Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
+	Route::post('authenticate', 'AuthenticateController@authenticate');
+
+	Route::resource('user', 'UserController');
+	Route::resource('userinfos', 'UserInfosController');
+});
 
 Route::group(['middleware' => ['web']], function () {
-    //
+	//
 });
