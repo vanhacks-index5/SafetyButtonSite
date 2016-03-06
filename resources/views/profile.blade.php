@@ -9,7 +9,7 @@
                 <table class="width-full">
                     <thead>
                     <tr>
-                        <th>Contact #</th>
+                        <th>Name</th>
                         <th>User</th>
                         <th>Time</th>
                         <th>Actions</th>
