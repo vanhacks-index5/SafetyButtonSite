@@ -22,7 +22,7 @@
                             <td>{{ $ThisUser->name }}</td>
                             <td>{{ $ThisUser->Home_Address }}</td>
                             <td>{{ $ThisUser->created_at }}</td>
-                            <td><a href="/profile/{{$ThisUser->id}}">View</a></td>
+                            <td>View</td>
                         </tr>
                     @endforeach
                 </table>
