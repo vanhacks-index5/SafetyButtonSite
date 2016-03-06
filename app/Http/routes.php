@@ -13,6 +13,7 @@
 
 Route::get('/', 'IndexController@index');
 Route::get('/profile', 'IndexController@profile');
+Route::get('/log', 'IndexController@log');
 
 /*
 |--------------------------------------------------------------------------
@@ -25,8 +26,7 @@ Route::get('/profile', 'IndexController@profile');
 |
 */
 
-Route::group(['prefix' => 'api'], function()
-{
+Route::group(['prefix' => 'api'], function () {
 	Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
 	Route::post('authenticate', 'AuthenticateController@authenticate');
 
