@@ -34,7 +34,8 @@
                             <td>{{ $ThisUser->number }}</td>
                             <td>{{ $ThisUser->name }}</td>
                             <td>{{ $ThisUser->updated_at }}</td>
-                            <td>View</td>
+                            <td><a href = "/profile/{{$ThisUser->id}}/{{$ThisUser->lat}}/{{$ThisUser->lng}}">View</a></td>
+                            <td>Clear</td>
                         </tr>
                     @endforeach
                 </table>

@@ -44,10 +44,17 @@ class UserController extends Controller
 	{
 		$user = User::find($id);
 
-		$user->emergency = 0;
+		$user->emergency = 1;
 		$user->lat = $request->input("lat");
 		$user->lng = $request->input("lng");
 		$user->save();
 	}
+	public function clear($id){
+		$user = User::find($id);
 
+		$user->emergency = 0;
+		$user->lat = null;
+		$user->lng = null;
+		$user->save();
+	}
 }

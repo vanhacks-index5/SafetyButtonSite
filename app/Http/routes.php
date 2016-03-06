@@ -32,6 +32,7 @@ Route::group(['prefix' => 'api'], function () {
 	Route::post('authenticate', 'AuthenticateController@authenticate');
 
 	Route::resource('user', 'UserController');
+	Route::post('/user/{id}/clear', 'UserController@clear');
 	Route::resource('userinfos', 'UserInfosController');
 });
 
