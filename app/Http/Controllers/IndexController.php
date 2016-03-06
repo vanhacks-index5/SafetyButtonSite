@@ -35,4 +35,9 @@ class IndexController extends Controller
 		$History = UserLog::all();
 		return view('log', ['History' => $History]);
 	}
+
+	public function show($id){
+		$user = DB::select('select * from users JOIN UserInfos ON users.id = UserInfos.User_ID WHERE id = ? ORDER BY Info_ID DESC LIMIT 1' , [$id]);
+		return view('userprofile', ['user' => $user[0]]);
+	}
 }
