@@ -58,6 +58,8 @@ class UserController extends Controller
 		$user->lat = null;
 		$user->lng = null;
 		$user->save();
+
+		return redirect()->action('IndexController@index');
 	}
 
 	public function getEmergencyUsers(){
