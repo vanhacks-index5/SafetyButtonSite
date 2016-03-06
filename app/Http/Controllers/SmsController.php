@@ -8,7 +8,7 @@ use JWTAuth;
 
 class SmsController extends Controller
 {
-	public function index(Request $request)
+	public function index()
 	{
 		$ThisMessage = array();
 		$ThisMessage['Message_UUID'] = $_POST['MessageUUID'];
@@ -18,5 +18,6 @@ class SmsController extends Controller
 		$ThisMessage['Message_DateCreate'] = "2000-01-01";
 
 		error_log($ThisMessage['Message_Text'], 3, "/var/log/www/www.safetybutton.local/logs/test.log");
+		return "1";
 	}
 }
