@@ -18,6 +18,15 @@ class IndexController extends Controller
 		return view('index', ['EmergencyUsers' => $EmergencyUsers]);
 	}
 
+	/**
+	 * Show the front page
+	 */
+	public function index2()
+	{
+		$EmergencyUsers = User::where('emergency', 1)->get();
+		return view('index2', ['EmergencyUsers' => $EmergencyUsers]);
+	}
+
 	public function profile()
 	{
 		$Users = DB::select(
