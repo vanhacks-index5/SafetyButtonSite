@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="/css/foundation.css"/>
     <link rel="stylesheet" href="/css/_custom.css"/>
     <script src="/js/vendor/modernizr.js"></script>
+    <script src="/js/mqttws31.js"></script>
 </head>
 <body>
-
 <div class="contain-to-grid">
     <nav class="top-bar" data-topbar role="navigation">
         <ul class="title-area">

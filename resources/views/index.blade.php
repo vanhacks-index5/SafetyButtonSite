@@ -1,11 +1,18 @@
 @extends('master')
 
 @section('content')
+
     <div class="row">
         <div class="large-12 small-12 columns">
-            <div class="alert-box success margin-top">
-                There are no emergencies at this time.
-            </div>
+            @if (count($EmergencyUsers) === 0)
+                <div class="alert-box success margin-top">
+                    There are no emergencies at this time.
+                </div>
+            @else
+                <div class="alert-box alert margin-top">
+                    There are currently ongoing emergencies.
+                </div>
+            @endif
         </div>
     </div>
 
