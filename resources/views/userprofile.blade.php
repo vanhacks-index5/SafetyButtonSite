@@ -73,13 +73,13 @@
             </table>
 
 
-                @if($lat && $lng)
+                @if($user->lat && $user->lng)
                     <iframe
                             width="100%"
                             height="450"
                             frameborder="0" style="border:0"
                             src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDmfHnyvhOGHaEb0gSg9Y_wFrMkeVhGhFw
-                                &q={{$lat}},{{$lng}}" allowfullscreen>
+                                &q={{$user->lat}},{{$user->lng}}" allowfullscreen>
                     </iframe>
                 @endif
 

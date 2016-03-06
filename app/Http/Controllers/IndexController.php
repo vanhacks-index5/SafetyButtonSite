@@ -36,8 +36,8 @@ class IndexController extends Controller
 		return view('log', ['History' => $History]);
 	}
 
-	public function show($id, $lat = null, $lng = null){
+	public function show($id){
 		$user = DB::select('select * from users LEFT JOIN UserInfos ON users.id = UserInfos.User_ID WHERE users.id = ? ORDER BY Info_ID DESC LIMIT 1' , [$id]);
-		return view('userprofile', ['user' => $user[0], 'lat' => $lat, 'lng' => $lng]);
+		return view('userprofile', ['user' => $user[0]] );
 	}
 }
