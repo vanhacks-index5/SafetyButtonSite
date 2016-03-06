@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Http\Controllers\Controller;
 use DB;
+use App\Models\UserLog;
 
 class IndexController extends Controller
 {
@@ -19,13 +20,24 @@ class IndexController extends Controller
 
 	public function profile()
 	{
-		$Users = User::all();
+		$Users = DB::select(
+			"SELECT * " .
+			"FROM users " .
+			"   JOIN UserInfos " .
+			"       ON users.id = UserInfos.Info_ID " .
+			"ORDER BY UserInfos.Info_ID DESC "
+		);
 		return view('profile', ['Users' => $Users]);
+	}
+
+	public function log()
+	{
+		$History = UserLog::all();
+		return view('log', ['History' => $History]);
 	}
 
 	public function show($id){
 		$user = DB::select('select * from users JOIN UserInfos ON users.id = UserInfos.User_ID WHERE id = ? ORDER BY Info_ID DESC LIMIT 1' , [$id]);
-//		return response()->json($user);
 		return view('userprofile', ['user' => $user[0]]);
 	}
 }

@@ -5,23 +5,23 @@
     <div class="row">
         <div class="large-12 small-12 columns">
             <div class="panel">
-                <h4>Customers Profile Panel</h4>
+                <h4>Emergency Log Panel</h4>
                 <table class="width-full">
                     <thead>
                     <tr>
                         <th>User ID</th>
                         <th>Name</th>
                         <th>Address</th>
-                        <th>Date Registered</th>
-                        <th>Actions</th>
+                        <th>Date</th>
+                        <th>Action</th>
                     </tr>
                     </thead>
-                    @foreach ($Users as $ThisUser)
+                    @foreach ($History as $ThisUser)
                         <tr>
-                            <td>{{ $ThisUser->id}}</td>
-                            <td>{{ $ThisUser->name }}</td>
-                            <td>{{ $ThisUser->Home_Address }}</td>
-                            <td>{{ $ThisUser->created_at }}</td>
+                            <td>{{ $ThisUser->User_ID}}</td>
+                            <td>{{ $ThisUser->StartTime }}</td>
+                            <td>{{ $ThisUser->EndTime }}</td>
+                            <td>{{ $ThisUser->Action }}</td>
                             <td>View</td>
                         </tr>
                     @endforeach
