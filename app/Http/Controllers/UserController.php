@@ -39,4 +39,15 @@ class UserController extends Controller
 
 		return json_encode($ThisUser);
 	}
+
+	public function update(Request $request, $id)
+	{
+		$user = User::find($id);
+
+		$user->emergency = 0;
+		$user->lat = $request->input("lat");
+		$user->lng = $request->input("lng");
+		$user->save();
+	}
+
 }

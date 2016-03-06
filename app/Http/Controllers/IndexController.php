@@ -23,7 +23,7 @@ class IndexController extends Controller
 		$Users = DB::select(
 			"SELECT * " .
 			"FROM users " .
-			"   JOIN UserInfos " .
+			"   LEFT JOIN UserInfos " .
 			"       ON users.id = UserInfos.Info_ID " .
 			"ORDER BY UserInfos.Info_ID DESC "
 		);
@@ -37,7 +37,7 @@ class IndexController extends Controller
 	}
 
 	public function show($id){
-		$user = DB::select('select * from users JOIN UserInfos ON users.id = UserInfos.User_ID WHERE id = ? ORDER BY Info_ID DESC LIMIT 1' , [$id]);
+		$user = DB::select('select * from users LEFT JOIN UserInfos ON users.id = UserInfos.User_ID WHERE users.id = ? ORDER BY Info_ID DESC LIMIT 1' , [$id]);
 		return view('userprofile', ['user' => $user[0]]);
 	}
 }
