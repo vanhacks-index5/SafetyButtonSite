@@ -13,7 +13,7 @@
 
 Route::get('/', 'IndexController@index');
 Route::get('/profile', 'IndexController@profile');
-Route::get('/profile/{id}', 'IndexController@show');
+Route::get('/profile/{id}/{lat?}/{lng?}', 'IndexController@show');
 Route::get('/log', 'IndexController@log');
 
 /*
